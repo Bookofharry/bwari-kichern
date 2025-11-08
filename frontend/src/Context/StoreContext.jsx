@@ -7,12 +7,12 @@ import { useNavigate } from "react-router-dom";
 const StoreContextProvider = (props) => {
 
     const navigate = useNavigate();
-    const url = "http://localhost:4000"
+    const url = import.meta.env.VITE_API_BASE_URL || "http://localhost:4000";
     const [food_list, setFoodList] = useState([]);
     const [cartItems, setCartItems] = useState({});
     const [token, setToken] = useState("")
-    const currency = "₦";
-    const deliveryCharge = 2000;
+    const currency = import.meta.env.VITE_CURRENCY_SYMBOL || "₦";
+    const deliveryCharge = Number(import.meta.env.VITE_DELIVERY_FEE) || 2000;
     const home = () => {
         navigate("/")
     }
