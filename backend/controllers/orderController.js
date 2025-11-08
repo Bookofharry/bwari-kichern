@@ -2,13 +2,9 @@ import orderModel from "../models/orderModel.js";
 import userModel from "../models/userModel.js";
 import Stripe from "stripe";
 
-const stripeSecretKey = 'sk_test_51SPqnIB2MAimQUK84v5PUKVe9jjs8bBHkWH8WI7cfeL6PtNPmq8HoFbW8kok9baCgXPDVhEXh0kzu3fqfW8dUaPc00fTW8OCHNnpm';
-
-if (!stripeSecretKey) {
-  throw new Error("STRIPE_SECRET_KEY is not configured");
-}
-
-const stripe = stripeSecretKey;
+const stripe = new Stripe(
+  "sk_test_51SPqnIB2MAimQUK84v5PUKVe9jjs8bBHkWH8WI7cfeL6PtNPmq8HoFbW8kok9baCgXPDVhEXh0kzu3fqfW8dUaPc00fTW8OCHNnpm"
+);
 
 //config variables
 const currency ="ngn";
