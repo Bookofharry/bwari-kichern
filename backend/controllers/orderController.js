@@ -1,12 +1,29 @@
 import orderModel from "../models/orderModel.js";
-import userModel from "../models/userModel.js"
+import userModel from "../models/userModel.js";
 import Stripe from "stripe";
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+
+const stripeSecretKey = 'sk_test_51SPqnIB2MAimQUK84v5PUKVe9jjs8bBHkWH8WI7cfeL6PtNPmq8HoFbW8kok9baCgXPDVhEXh0kzu3fqfW8dUaPc00fTW8OCHNnpm';
+
+if (!stripeSecretKey) {
+  throw new Error("STRIPE_SECRET_KEY is not configured");
+}
+
+const stripe = stripeSecretKey;
 
 //config variables
-const currency = "usd";
-const deliveryCharge = 5;
-const frontend_URL = 'http://localhost:5173';
+const currency =
+  process.env.STRIPE_CURRENCY ||
+  process.env.VITE_STRIPE_CURRENCY ||
+  "ngn";
+const deliveryCharge = Number(
+  process.env.DELIVERY_FEE ||
+    process.env.VITE_DELIVERY_FEE ||
+    2000
+);
+const frontend_URL =
+  process.env.FRONTEND_URL ||
+  process.env.VITE_FRONTEND_URL ||
+  "http://localhost:5173";
 
 // Placing User Order for Frontend using stripe
 const placeOrder = async (req, res) => {
@@ -67,7 +84,6 @@ const placeOrderCod = async (req, res) => {
             items: req.body.items,
             amount: req.body.amount,
             address: req.body.address,
-            payment: true,
         })
         await newOrder.save();
         await userModel.findByIdAndUpdate(req.body.userId, { cartData: {} });

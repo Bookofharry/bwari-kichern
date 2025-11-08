@@ -9,13 +9,27 @@
 }
 .my-orders-order{
     display: grid;
-    grid-template-columns: 0.5fr 2fr 1fr 1fr 2fr 1fr;
+    grid-template-columns: 0.5fr 2fr 1fr 0.8fr 1fr 2fr 1fr;
     align-items: center;
     gap: 30px;
     font-size: 14px;
     padding: 10px 20px;
     color: #454545;
     border: 1px solid tomato;
+}
+.payment-status{
+    padding: 6px 12px;
+    border-radius: 999px;
+    text-align: center;
+    font-weight: 600;
+}
+.payment-status.paid{
+    color: #0c7a43;
+    background: #e0f9ed;
+}
+.payment-status.unpaid{
+    color: #b12a1c;
+    background: #ffe6e1;
 }
 .my-orders-order img{
     width: 50px;

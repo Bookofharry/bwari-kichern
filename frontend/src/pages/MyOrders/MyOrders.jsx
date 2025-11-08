@@ -25,6 +25,7 @@ const MyOrders = () => {
       <h2>My Orders</h2>
       <div className="container">
         {data.map((order,index)=>{
+          const isPaid = !!order.payment;
           return (
             <div key={index} className='my-orders-order'>
                 <img src={assets.parcel_icon} alt="" />
@@ -38,6 +39,7 @@ const MyOrders = () => {
                   
                 })}</p>
                 <p>{currency}{order.amount}.00</p>
+                <p className={`payment-status ${isPaid ? 'paid' : 'unpaid'}`}>{isPaid ? "Paid" : "Unpaid"}</p>
                 <p>Items: {order.items.length}</p>
                 <p><span>&#x25cf;</span> <b>{order.status}</b></p>
                 <button onClick={fetchOrders}>Track Order</button>

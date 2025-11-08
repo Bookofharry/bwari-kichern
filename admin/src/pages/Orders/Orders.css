@@ -1,6 +1,6 @@
 .order-item{
     display: grid;
-    grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr;
+    grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr 1fr;
     align-items: start;
     gap: 30px;
     border: 1px solid tomato;
@@ -25,6 +25,20 @@
     width: max(10vw,120px);
     padding: 10px;
     outline:none;
+}
+.payment-pill{
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-weight: 600;
+    text-align: center;
+}
+.payment-pill.paid{
+    color: #0c7a43;
+    background: #e0f9ed;
+}
+.payment-pill.unpaid{
+    color: #b12a1c;
+    background: #ffe6e1;
 }
 @media(max-width:1000px){
     .order-item{

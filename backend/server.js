@@ -16,8 +16,10 @@ const port = process.env.PORT || 4000;
 app.use(express.json())
 app.use(cors())
 
+
 // db connection
 connectDB()
+
 
 // api endpoints
 app.use("/api/user", userRouter)
