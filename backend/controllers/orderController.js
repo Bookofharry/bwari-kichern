@@ -11,20 +11,9 @@ if (!stripeSecretKey) {
 const stripe = stripeSecretKey;
 
 //config variables
-const currency =
-  process.env.STRIPE_CURRENCY ||
-  process.env.VITE_STRIPE_CURRENCY ||
-  "ngn";
-const deliveryCharge = Number(
-  process.env.DELIVERY_FEE ||
-    process.env.VITE_DELIVERY_FEE ||
-    2000
-);
-const frontend_URL =
-  process.env.FRONTEND_URL ||
-  process.env.VITE_FRONTEND_URL ||
-  "http://localhost:5173";
-
+const currency ="ngn";
+const deliveryCharge = 2000;
+const frontend_URL = "https://bwari-kichern-av1y.vercel.app";
 // Placing User Order for Frontend using stripe
 const placeOrder = async (req, res) => {
 
